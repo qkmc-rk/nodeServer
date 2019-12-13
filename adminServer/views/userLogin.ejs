@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/addrInput.css' />
+</head>
+<body>
+<form action="" method="post">
+    <input type="text" value="" name = "name" class="input" placeholder="请输入用户名"/>
+    <input type="text" value="" name = "password" class="input" placeholder="请输入密码"/>
+    <a href="/userReg">去注册</a>
+    <input type="submit" value="提交" class="inbtn" />
+</form>
+<% if (success) { %>
+        <div><%= success %></div>
+<% } %>
+<% if (error) { %>
+    <div><%= error %> </div>
+<% } %>
+</body>
+</html>

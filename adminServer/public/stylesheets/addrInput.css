@@ -1,0 +1,43 @@
+*{
+    padding:0;
+    margin:0;
+}
+body{
+    /*background: rgb(57,56,56);*/
+}
+.input{
+    width:90%;
+    height:120px;
+    background: none;
+    border:none;
+    outline: none;
+    border: 1px solid rgb(57,56,56);
+    display: block;
+    margin:100px auto;
+    font-size:50px;
+    padding-left:10px;
+}
+textarea{
+    width:90%;
+    height:220px;
+    background: none;
+    border:none;
+    outline: none;
+    border: 1px solid rgb(57,56,56);
+    display: block;
+    margin:100px auto;
+    font-size:50px;
+    padding-left:10px;
+}
+.inbtn{
+    width:90%;
+    height:120px;
+    background: none;
+    border:none;
+    outline: none;
+    display: block;
+    margin:100px auto;
+    font-size:50px;
+    background: rgb(57,56,56);
+    color:white;
+}

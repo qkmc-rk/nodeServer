@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/addrInput.css' />
+    <style>
+        .no{
+    width:100%;
+    height:100%;
+    background:rgb(0,0,0,.5);
+    color:rgb(200,76,51);
+    font-size:100px;
+    text-align:center;
+    line-height:500px;
+    font-weight:600;
+    position:absolute;
+    top:0;
+    left:0;
+}
+    </style>
+</head>
+<body>
+<form action="" method="post">
+    <input type="text" value="" name = "name" class="input" placeholder="请输入姓名"/>
+    <input type="text" value="" name = "tel" class="input" placeholder="请输入电话"/>
+    <input type="text" value="" name = "foodid" id="foodid" class="input" placeholder="请输入电话"/>
+    <textarea type="text" name="addr" placeholder="请填入详细地址"></textarea>
+    <input type="submit" value="提交" class="inbtn" />
+</form>
+<% if (success) { %>
+        <div class="no"><%= success %></div>
+<% } %>
+<% if (error) { %>
+    <div class="no"><%= error %> </div>
+<% } %>
+<script>
+    window.onload = function(){
+        var id = localStorage.getItem('buyId');
+        document.getElementById('foodid').value = id;
+    }
+</script>
+</body>
+</html>

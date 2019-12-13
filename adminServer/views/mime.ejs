@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <link rel="stylesheet" href="/stylesheets/mime.css">
+</head>
+<body>
+<div class="top">
+    <div class="pic"><%= pic %></div>
+    <div class="name"><%= user.name %></div>
+</div>
+<div class="son_bar"><a href="mysongs">我的点歌</a></div>
+<div class="son_bar"><a href="myups">我的投稿</a></div>
+<div class="son_bar"><a href="logout">退出系统</a></div>
+<!--底部导航-->
+<%# <div class="bottom_bar">
+  <a href="/h5">
+    <div class="bottom_bar_son">
+      <img src="/images/news-1.png" alt="/images/news-1.png" class="icon"/>
+      <div class="bottom_bar_font">资讯中心</div>
+    </div>
+  </a>
+  <a href="/song">
+    <div class="bottom_bar_son">
+      <img src="/images/songs.png" alt="" class="icon"/>
+      <div class="bottom_bar_font">点歌</div>
+    </div>
+  </a>
+  <a href="/paper">
+    <div class="bottom_bar_son">
+      <img src="/images/news-4.png" alt="" class="icon"/>
+      <div class="bottom_bar_font">投稿</div>
+    </div>
+  </a>
+  <a href="/mime">
+    <div class="bottom_bar_son">
+      <img src="/images/geren.png" alt="" class="icon"/>
+      <div class="bottom_bar_font">个人中心</div>
+    </div>
+  </a>
+</div> %>
+</body>
+</html>

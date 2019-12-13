@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/addrInput.css' />
+</head>
+<body>
+<form action="" method="post">
+    <input type="text" value="" name = "name" class="input" placeholder="请输入用户名"/>
+    <input type="text" value="" name = "tel" class="input" placeholder="请输入电话"/>
+    <input type="password" value="" name = "password" class="input" placeholder="请输入密码"/>
+    <input type="password" value="" name = "password-repeat" class="input" placeholder="请重复密码"/>
+    <input type="submit" value="提交" class="inbtn" />
+</form>
+<% if (success) { %>
+        <div><%= success %></div>
+<% } %>
+<% if (error) { %>
+    <div><%= error %> </div>
+<% } %>
+</body>
+</html>

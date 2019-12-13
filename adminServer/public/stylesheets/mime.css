@@ -1,0 +1,39 @@
+.top{
+    width:100%;
+    height:500px;
+    background: rgb(128,128,128);
+    overflow: hidden;
+}
+.pic{
+    width:200px;
+    height:200px;
+    background: white;
+    border-radius: 30px;
+    margin:50px auto;
+    font-size:100px;
+    text-align: center;
+    line-height: 200px;
+    color:black;
+    font-weight: 900;
+}
+.name{
+    width:100%;
+    height:60px;
+    line-height: 60px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 38px;
+    letter-spacing: 5px;
+    color:white;
+}
+.son_bar{
+    width:100%;
+    height:80px;
+    background: rgb(248,248,248);
+    line-height: 80px;
+    text-indent: 20px;
+    font-weight: 500;
+    font-size: 28px;
+    font-family: "Apple Braille";
+    margin-top:30px;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Blog</title>
+<link rel="stylesheet" href="/stylesheets/style.css">
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+<header>
+<h1><%= title %></h1>
+</header>
+<form id="regForm" onsubmit="return false" action="##" method="post">
+    <p>用户名：<input name="userName" type="text" id="txtUserName" tabindex="1" size="15" value=""/></p>
+        <p>密　码：<input name="password" type="password" id="TextBox2" tabindex="2" size="16" value=""/></p>
+        <p><input type="button" value="注册" onclick="reg()">&nbsp;<input type="reset" value="重置"></p>
+</form>
+<script type="text/javascript">
+        function reg() {
+            $.ajax({
+            //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/manager/reg" ,//url
+                data: $('#regForm').serialize(),
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    // if (result.resultCode == 200) {
+                    //     alert("SUCCESS");
+                    // }
+                },
+                error : function() {
+                    alert("异常！");
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    <head>
+        <meta charset="UTF-8">
+        <title>欢迎页面-X-admin2.2</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+        <link rel="stylesheet" href="/stylesheets/font.css">
+        <link rel="stylesheet" href="/stylesheets/xadmin.css">
+        <script src="/lib/layui/layui.js" charset="utf-8"></script>
+        <script type="text/javascript" src="/javascripts/xadmin.js"></script>
+        <!--[if lt IE 9]>
+          <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+          <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="x-nav">
+          <span class="layui-breadcrumb">
+            <a href="">首页</a>
+            <a href="">演示</a>
+            <a>
+              <cite>导航元素</cite></a>
+          </span>
+          <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+            <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i></a>
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <%# <div class="layui-card-body ">
+                            <form class="layui-form layui-col-space5">
+                                <div class="layui-inline layui-show-xs-block">
+                                    <input class="layui-input"  autocomplete="off" placeholder="开始日" name="start" id="start">
+                                </div>
+                                <div class="layui-inline layui-show-xs-block">
+                                    <input class="layui-input"  autocomplete="off" placeholder="截止日" name="end" id="end">
+                                </div>
+                                <div class="layui-inline layui-show-xs-block">
+                                    <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-inline layui-show-xs-block">
+                                    <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+                                </div>
+                            </form>
+                        </div> %>
+                        <div class="layui-card-body layui-table-body layui-table-main">
+                            <table class="layui-table layui-form">
+                                <thead>
+                                  <tr>
+                                    <th>ID</th>
+                                    <th>房东</th>
+                                    <th>房源信息</th>
+                                    <th>是否发布</th>
+                                    <th>是否租出</th>
+                                    <th>图片(点击可查看)</th>
+                                    <th>操作</th></tr>
+                                </thead>
+                                <tbody id="tabbody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </body>
+    <script>
+      function getData(){
+        var xhr=new XMLHttpRequest();
+        xhr.open("GET","/getAllac",true);
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState==4){
+                if(xhr.status==200){
+                    var arr = JSON.parse(xhr.responseText)
+                    for(var i=0;i<arr.length;i++){
+                      var tr = document.createElement('tr');
+                      
+                      var idTd = document.createElement('td');
+                      var idText = document.createTextNode(arr[i].id);
+                      idTd.appendChild(idText);
+                      tr.appendChild(idTd);
+
+                      var nameTd = document.createElement('td');
+                      var nameText = document.createTextNode(arr[i].fdId);
+                      nameTd.appendChild(nameText);
+                      tr.appendChild(nameTd);
+
+                      var telTd = document.createElement('td');
+                      console.log(arr[i].houseinfo);
+                      var div1 = document.createElement('div');
+                      var text1 = document.createTextNode("地址："+JSON.parse(arr[i].houseinfo).addr);
+                      div1.appendChild(text1)
+                      telTd.appendChild(div1);
+
+                      var div2 = document.createElement('div');
+                      var text2 = document.createTextNode("租金："+JSON.parse(arr[i].houseinfo).cash+"/月");
+                      div2.appendChild(text2)
+                      telTd.appendChild(div2);
+
+                      var div3 = document.createElement('div');
+                      var text3 = document.createTextNode("主题："+JSON.parse(arr[i].houseinfo).time);
+                      div3.appendChild(text3)
+                      telTd.appendChild(div3);
+
+                      var div4 = document.createElement('div');
+                      var text4 = document.createTextNode("付款方式："+JSON.parse(arr[i].houseinfo).cashType);
+                      div4.appendChild(text4)
+                      telTd.appendChild(div4);
+
+                      var div5 = document.createElement('div');
+                      var text5 = document.createTextNode("面积："+JSON.parse(arr[i].houseinfo).areaWidth);
+                      div2.appendChild(text5)
+                      telTd.appendChild(div5);
+
+                      var div6 = document.createElement('div');
+                      var text6 = document.createTextNode("采光程度："+JSON.parse(arr[i].houseinfo).caig);
+                      div6.appendChild(text6)
+                      telTd.appendChild(div6);
+
+                      var div7 = document.createElement('div');
+                      var text7 = document.createTextNode("朝向："+JSON.parse(arr[i].houseinfo).caox);
+                      div7.appendChild(text7)
+                      telTd.appendChild(div7);
+
+                      var div8 = document.createElement('div');
+                      var text8 = document.createTextNode("电梯："+JSON.parse(arr[i].houseinfo).diant);
+                      div8.appendChild(text8)
+                      telTd.appendChild(div8);
+
+                      var div9 = document.createElement('div');
+                      var text9 = document.createTextNode("看房时间："+JSON.parse(arr[i].houseinfo).looktime);
+                      div9.appendChild(text9)
+                      telTd.appendChild(div9);
+
+                      var div10 = document.createElement('div');
+                      var text10 = document.createTextNode("入住时间："+JSON.parse(arr[i].houseinfo).intime);
+                      div10.appendChild(text10)
+                      telTd.appendChild(div10);
+
+                      var div11 = document.createElement('div');
+                      var text11 = document.createTextNode("楼层："+JSON.parse(arr[i].houseinfo).floor);
+                      div11.appendChild(text11)
+                      telTd.appendChild(div11);
+
+                      var div12 = document.createElement('div');
+                      var text12 = document.createTextNode("家具情况："+JSON.parse(arr[i].houseinfo).jj_1);
+                      div12.appendChild(text12)
+                      telTd.appendChild(div12);
+
+                      tr.appendChild(telTd);
+
+                      var locationTd = document.createElement('td');
+                      var locationText = document.createTextNode(arr[i].isrelease);
+                      locationTd.appendChild(locationText);
+                      tr.appendChild(locationTd);
+
+                      var joinpeopleTd = document.createElement('td');
+                      var joinpeopleText = document.createTextNode(arr[i].isout);
+                      joinpeopleTd.appendChild(joinpeopleText);
+                      tr.appendChild(joinpeopleTd);
+
+                      var index1Td = document.createElement('td');
+                      var index1Link = document.createElement('a');
+                      index1Link.setAttribute('href',arr[i].imageindex);
+                      var index1Text = document.createTextNode(arr[i].imageindex);
+                      index1Link.appendChild(index1Text);
+                      index1Td.appendChild(index1Link);
+                      tr.appendChild(index1Td);
+
+                      var opTd = document.createElement('td');
+                      var opDiv = document.createElement('div');
+                      if(arr[i].isrelease == "no"){
+                      var opText = document.createTextNode('发布');
+                      opDiv.setAttribute('style',"background:green;color:white;text-align:center")
+                      }else{
+                      var opText = document.createTextNode('撤销');
+                      opDiv.setAttribute('style',"background:red;color:white;text-align:center")
+                      }
+                      
+                      opDiv.appendChild(opText);
+                      opTd.setAttribute('id',arr[i].id+"&"+arr[i].isrelease);
+                      opTd.appendChild(opDiv);
+                      opTd.onclick = function(){
+                                deletePic(this.id);
+                            }
+                      tr.appendChild(opTd);
+
+                      document.getElementById("tabbody").appendChild(tr);
+                    }
+                }
+            }
+        };
+        xhr.send();
+    }
+    //删除一张图片
+    function deletePic(id){
+        var xhr=new XMLHttpRequest();
+        xhr.open("POST","/deleteH",true);
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState==4){
+                if(xhr.status==200){
+                    strr = xhr.responseText;
+                    alert(xhr.responseText);
+                }
+            }
+        };
+        xhr.send(id);
+    }
+    window.onload = function(){
+      getData();
+    }
+    </script>
+    <script>
+      layui.use(['laydate','form'], function(){
+        var laydate = layui.laydate;
+        var  form = layui.form;
+
+
+        // 监听全选
+        form.on('checkbox(checkall)', function(data){
+
+          if(data.elem.checked){
+            $('tbody input').prop('checked',true);
+          }else{
+            $('tbody input').prop('checked',false);
+          }
+          form.render('checkbox');
+        }); 
+        
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#start' //指定元素
+        });
+
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#end' //指定元素
+        });
+
+
+      });
+
+       /*用户-停用*/
+      function member_stop(obj,id){
+          layer.confirm('确认要停用吗？',function(index){
+
+              if($(obj).attr('title')=='启用'){
+
+                //发异步把用户状态进行更改
+                $(obj).attr('title','停用')
+                $(obj).find('i').html('&#xe62f;');
+
+                $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
+                layer.msg('已停用!',{icon: 5,time:1000});
+
+              }else{
+                $(obj).attr('title','启用')
+                $(obj).find('i').html('&#xe601;');
+
+                $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
+                layer.msg('已启用!',{icon: 5,time:1000});
+              }
+              
+          });
+      }
+
+      /*用户-删除*/
+      function member_del(obj,id){
+          layer.confirm('确认要删除吗？',function(index){
+              //发异步删除数据
+              $(obj).parents("tr").remove();
+              layer.msg('已删除!',{icon:1,time:1000});
+          });
+      }
+
+
+
+      function delAll (argument) {
+        var ids = [];
+
+        // 获取选中的id 
+        $('tbody input').each(function(index, el) {
+            if($(this).prop('checked')){
+               ids.push($(this).val())
+            }
+        });
+  
+        layer.confirm('确认要删除吗？'+ids.toString(),function(index){
+            //捉到所有被选中的，发异步进行删除
+            layer.msg('删除成功', {icon: 1});
+            $(".layui-form-checked").not('.header').parents('tr').remove();
+        });
+      }
+    </script>
+</html>
